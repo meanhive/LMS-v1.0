@@ -12,6 +12,7 @@ const auth = async (req,res,next) => {
 
             req.user = user
             next() // forwarding response to next controller
+           // res.json({ user })
         })
     } catch (err) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: err.message})
