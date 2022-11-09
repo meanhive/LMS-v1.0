@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 function Register(props) {
   const [user,setUser] = useState({
@@ -8,6 +10,8 @@ function Register(props) {
       mobile: "",
       password: ""
   })
+
+  const navigate = useNavigate()
 
   const readValue = (e) => {
     const { name, value } = e.target;
@@ -18,6 +22,12 @@ function Register(props) {
       e.preventDefault()
         try {
             console.log('user =', user)
+            await axios.post(`/api/v1/auth/register`, user)
+              .then(res => {
+                  console.log('after register =', res.data);
+                  toast.success("User Registered Successfully");
+                  navigate('/login')
+              }).catch(err => toast.error(err.message));
         } catch (err) {
           toast.error(err.response.data.msg)
         }
