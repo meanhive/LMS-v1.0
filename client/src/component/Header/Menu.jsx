@@ -40,20 +40,7 @@ function Menu() {
                             Account
                     </NavLink>
                     <ul className="dropdown-menu">
-                        <li>
-                            {
-                                isAdmin ? <NavLink to={`/admin/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isStudent ? <NavLink to={`/student/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isTrainer ? <NavLink to={`/trainer/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                        </li>
+                        
                         <li>
                         {
                                 isAdmin ? <NavLink to={`/admin/dashboard`} className="dropdown-item">Dashboard</NavLink>
@@ -68,9 +55,23 @@ function Menu() {
                                 : null
                             }
                         </li>
+                        <li>
+                            {
+                                isAdmin ? <NavLink to={`/admin/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isStudent ? <NavLink to={`/student/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isTrainer ? <NavLink to={`/trainer/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                        </li>
                         <li className="dropdown-divider"></li>
                         <li>
-                            <NavLink to={`/`} onClick={logoutUser} className="dropdown-item text-white">Logout</NavLink>
+                            <NavLink to={`/`} onClick={logoutUser} className="dropdown-item btn btn-danger">Logout</NavLink>
                         </li>
                     </ul>
                 </li>
@@ -99,7 +100,7 @@ function Menu() {
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse justify-content-between" id="menu">
+            <div className={isLogged ? "collapse navbar-collapse justify-content-end": "collapse navbar-collapse justify-content-between"} id="menu">
                 {
                     isLogged ? null : (
                         <nav className="navbar-nav">
