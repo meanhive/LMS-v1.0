@@ -19,6 +19,7 @@ function StudentProfile() {
 
   const [user,setUser] = useState({
     name: "",
+    email: "",
     mobile: ""
   })
   const [isEdit,setIsEdit] = useState(false)
@@ -28,10 +29,36 @@ function StudentProfile() {
     setUser({ ...user, [name]: value })
   }
 
+  const toggleEdit = () => {
+      setIsEdit((prevState) => !prevState)
+  }
+
   
   useEffect(() => {
       setImg(currentUser.image)
+      setUser(currentUser)
   },[img,currentUser])
+
+  const updateHandler = async (e) => {
+    e.preventDefault()
+      try {
+          const updatedUser = {
+              name: user.name,
+              email: user.email,
+              mobile: user.mobile
+          }
+          console.log('updated data =', updatedUser)
+           // update db file
+           await axios.patch(`/api/v1/user/update`, updatedUser , {
+            headers: { Authorization: token }
+          });
+          toast.success("Profile data updated successfully")
+          window.location.href = "/student/profile"
+
+      } catch (err) {
+        toast.error(err.data.response.msg)
+      }
+  }
 
 
   const handleUpload = async (e) => {
@@ -137,25 +164,58 @@ function StudentProfile() {
                     </div>
                 </div>
                 <div className="col-md-8">
-                    <div className="card-body">
-                        <h4 className="card-title text-center text-uppercase text-success"> 
-                        {currentUser.name} </h4>
-                        <hr />
-                        <p className="card-text">
-                            <strong>Email</strong>
-                            <strong className="float-end text-danger"> {currentUser.email} </strong>
-                        </p>
-                        <hr />
-                        <p className="card-text">
-                            <strong>Mobile</strong>
-                            <strong className="float-end text-danger"> {currentUser.mobile} </strong>
-                        </p>
-                        <hr />
-                        <p className="card-text">
-                            <strong>Role</strong>
-                            <strong className="float-end text-danger"> {currentUser.role} </strong>
-                        </p>
-                    </div>
+                    {
+                      isEdit ? (
+                        <div className="card-body">
+                             <div className="d-flex justify-content-between">
+                                <h4 className="card-title text-center text-uppercase text-success"> Update User </h4>
+                              <button onClick={toggleEdit} className="btn btn-danger"> 
+                                <i className="bi bi-x-circle"></i></button>
+                            </div>
+                            <hr />
+                            <form autoComplete="off" onSubmit={updateHandler} >
+                                <div className="form-group mt-2">
+                                    <label htmlFor="name">Name</label>
+                                    <input type="text" name="name" value={user.name} onChange={readValue} id="name" className="form-control" required />
+                                </div>
+                                <div className="form-group mt-2">
+                                    <label htmlFor="email">Email</label>
+                                    <input type="email" name="email" value={user.email} onChange={readValue} id="email" className="form-control" required />
+                                </div>
+                                <div className="form-group mt-2">
+                                    <label htmlFor="mobile">Mobile</label>
+                                    <input type="number" name="mobile" value={user.mobile} onChange={readValue} id="mobile" className="form-control" required />
+                                </div>
+                                <div className="form-group mt-2">
+                                    <input type="submit" value="Update" className="btn btn-warning" />
+                                </div>
+                            </form>
+                        </div>
+                      ) : (
+                        <div className="card-body">
+                            <div className="d-flex justify-content-between">
+                                <h4 className="card-title text-center text-uppercase text-success"> 
+                              {currentUser.name} </h4>
+                              <button onClick={toggleEdit} className="btn btn-info"> <i className="bi bi-pen"></i></button>
+                            </div>
+                          <hr />
+                          <p className="card-text">
+                              <strong>Email</strong>
+                              <strong className="float-end text-danger"> {currentUser.email} </strong>
+                          </p>
+                          <hr />
+                          <p className="card-text">
+                              <strong>Mobile</strong>
+                              <strong className="float-end text-danger"> {currentUser.mobile} </strong>
+                          </p>
+                          <hr />
+                          <p className="card-text">
+                              <strong>Role</strong>
+                              <strong className="float-end text-danger"> {currentUser.role} </strong>
+                          </p>
+                      </div>
+                      )
+                    }
                 </div>
               </div>
           </div>
