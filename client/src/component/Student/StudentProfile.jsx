@@ -47,7 +47,7 @@ function StudentProfile() {
               email: user.email,
               mobile: user.mobile
           }
-          console.log('updated data =', updatedUser)
+          // console.log('updated data =', updatedUser)
            // update db file
            await axios.patch(`/api/v1/user/update`, updatedUser , {
             headers: { Authorization: token }
@@ -65,7 +65,7 @@ function StudentProfile() {
     e.preventDefault();
       try {
          const file = e.target.files[0];
-         console.log('image data =', file)
+        //  console.log('image data =', file)
           // file validation
           if(!file) 
           return toast.error('file not exists..Choose image to upload..');

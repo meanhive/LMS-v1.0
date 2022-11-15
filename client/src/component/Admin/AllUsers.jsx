@@ -8,12 +8,14 @@ function AllUsers() {
     const context = useContext(DataContext)
     const token = context.token
     const [users,setUsers] = useState([])
+    const [role,setRole] = useState("")
+    const [userId,setUserId] = useState("")
 
     const readUsers =  async () => {
        const res = await axios.get(`/api/v1/user/allUsers`, {
             headers: { Authorization: token }
        })
-        console.log('all users =', res.data)
+        // console.log('all users =', res.data)
         setUsers(res.data.users)
     }
 
@@ -22,7 +24,34 @@ function AllUsers() {
     },[])
 
     const handleUpdate = (id) => {
-        console.log('id = ', id)
+        // console.log('id = ', id)
+        const extUser = users.find((user) => user._id === id )
+            // console.log('existUser =', extUser)
+            setRole(extUser.role)
+            setUserId(extUser._id)
+    }
+
+    const submitHandler = async (e) => {
+        e.preventDefault();
+         // update db file
+         await axios.patch(`/api/v1/user/changeRole/${userId}`, { role: role }, {
+            headers: { Authorization: token }
+          });
+          toast.success("User Role updated successfully")
+          window.location.href = "/admin/users"
+    }
+
+    const delHandler = async (id) => {
+        if(window.confirm(`Are you sure to delete the user?`)) {
+           const res =  await axios.delete(`/api/v1/user/delete/${id}`, {
+                headers: { Authorization: token }
+            })
+
+            toast.success(res.data.msg)
+            window.location.href = "/admin/users"
+        } else {
+            return ;
+        }
     }
 
   return (
@@ -61,7 +90,7 @@ function AllUsers() {
                                         <td> 
                                            <div className="btn-group">
                                            <button onClick={() => handleUpdate(item._id)} data-bs-toggle="modal" data-bs-target="#updateRole" className="btn btn-info"> <i className="bi bi-pen"></i> </button>    
-                                            <button className="btn btn-danger"> <i className="bi bi-trash"></i> </button>   </div> 
+                                            <button onClick={() => delHandler(item._id)} className="btn btn-danger"> <i className="bi bi-trash"></i> </button>   </div> 
                                         </td>
                                     </tr>
                                 )
@@ -81,10 +110,10 @@ function AllUsers() {
                             <button type="button" data-bs-dismiss="modal" className="btn-close"></button>
                         </div>
                         <div className="modal-body">
-                            <form autoComplete="off">
+                            <form autoComplete="off" onSubmit={submitHandler} >
                                 <div className="form-group mt-2">
                                     <label htmlFor="role">Choose Role</label>
-                                    <select name="role" id="role" className="form-select">
+                                    <select name="role" id="role" value={role} onChange={(e) => setRole(e.target.value)} className="form-select">
                                             <option value="student">Student</option>
                                             <option value="trainer">Trainer</option>
                                     </select>

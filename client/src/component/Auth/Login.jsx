@@ -19,10 +19,10 @@ function Login(props) {
   const submitHandler = async (e) => {
       e.preventDefault()
         try {
-            console.log('user =', user)
+            // console.log('user =', user)
             await axios.post(`/api/v1/auth/login`, user)
               .then(res => {
-                  console.log('after login =', res);
+                  // console.log('after login =', res);
                   localStorage.setItem("loginToken", true)
                   toast.success(res.data.msg);
                   // navigate('/')

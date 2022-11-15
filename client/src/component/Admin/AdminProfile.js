@@ -21,7 +21,7 @@ function AdminProfile() {
     e.preventDefault();
       try {
          const file = e.target.files[0];
-         console.log('image data =', file)
+        //  console.log('image data =', file)
           // file validation
           if(!file) 
           return toast.error('file not exists..Choose image to upload..');
