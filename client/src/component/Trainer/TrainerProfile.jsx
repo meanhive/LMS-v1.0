@@ -35,6 +35,7 @@ function TrainerProfile() {
 
   
   useEffect(() => {
+    document.title = `Welcome,${currentUser.name},CMS-v1.0`;
       setImg(currentUser.image)
       setUser(currentUser)
   },[img,currentUser])
