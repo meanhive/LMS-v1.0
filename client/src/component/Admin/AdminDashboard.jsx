@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { DataContext } from '../../GlobalContext'
 
 function AdminDashboard() {
+  const context = useContext(DataContext)
   return (
     <div className="container">
       <div className="row">
