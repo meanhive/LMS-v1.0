@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
@@ -8,6 +8,11 @@ function Login(props) {
       email: "",
       password: ""
   })
+
+  useEffect(() => {
+    document.title = `LMS-v1.0 Login`
+  })
+
 
   const navigate = useNavigate()
 

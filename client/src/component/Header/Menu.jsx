@@ -94,11 +94,11 @@ function Menu() {
                     {
                         isLogged? (
                             <React.Fragment>
-                                    { isAdmin ? "Admin-CMS-v1.0": null }
-                                    { isStudent ? "Student-CMS-v1.0": null }
-                                    { isTrainer ? "Trainer-CMS-v1.0": null }
+                                    { isAdmin ? "Admin-LMS-v1.0": null }
+                                    { isStudent ? "Student-LMS-v1.0": null }
+                                    { isTrainer ? "Trainer-LMS-v1.0": null }
                             </React.Fragment>
-                        ): "CMS-v1.0"
+                        ): "LMS-v1.0"
                     }                    
             </NavLink>
 
