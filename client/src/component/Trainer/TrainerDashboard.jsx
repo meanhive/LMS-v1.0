@@ -6,7 +6,7 @@ function TrainerDashboard() {
   const [currentUser] = context.data.authApi.currentUser
   
   useEffect(() => {
-    document.title = `Welcome,${currentUser.name},CMS-v1.0`;
+    document.title = `Welcome ${currentUser.name} - CMS-v1.0`;
   },[])
 
   return (

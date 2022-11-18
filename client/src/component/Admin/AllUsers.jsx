@@ -79,13 +79,13 @@ function AllUsers() {
                         {
                             users.map((item,index) => {
                                 return (
-                                    <tr key={index} >
+                                    <tr key={index} className="text-center align-content-center" >
                                         <td> {item.name} </td>
                                         <td> {item.email} </td>
                                         <td> {item.mobile} </td>
                                         <td> {item.role} </td>
                                         <td> 
-                                            <img src={item.image.url} alt="no image found" className="img-fluid" width={100} height={100} />
+                                            <img src={item.image.url} alt="no image found" className="img-fluid img-circle" width={50} height={50} />
                                         </td>
                                         <td> 
                                            <div className="btn-group">

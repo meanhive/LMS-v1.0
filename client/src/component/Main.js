@@ -20,6 +20,7 @@ import StudentProfile from './Student/StudentProfile'
 import TrainerDashboard from './Trainer/TrainerDashboard'
 import TrainerProfile from './Trainer/TrainerProfile'
 import AllUsers from './Admin/AllUsers'
+import Footer from './Header/Footer'
 
 
 function Main() {
@@ -73,6 +74,7 @@ function Main() {
                 }
               <Route path={`/*`} element={<Pnf/>} />
         </Routes>
+        <Footer/>
     </Router>
   )
 }

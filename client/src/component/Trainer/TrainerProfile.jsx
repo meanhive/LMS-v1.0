@@ -35,7 +35,7 @@ function TrainerProfile() {
 
   
   useEffect(() => {
-    document.title = `Welcome,${currentUser.name},CMS-v1.0`;
+    document.title = `Welcome ${currentUser.name} - CMS-v1.0`;
       setImg(currentUser.image)
       setUser(currentUser)
   },[img,currentUser])
@@ -202,17 +202,17 @@ function TrainerProfile() {
                           <hr />
                           <p className="card-text">
                               <strong>Email</strong>
-                              <strong className="float-end text-danger"> {currentUser.email} </strong>
+                              <strong className="float-end text-secondary"> {currentUser.email} </strong>
                           </p>
                           <hr />
                           <p className="card-text">
                               <strong>Mobile</strong>
-                              <strong className="float-end text-danger"> {currentUser.mobile} </strong>
+                              <strong className="float-end text-secondary"> {currentUser.mobile} </strong>
                           </p>
                           <hr />
                           <p className="card-text">
                               <strong>Role</strong>
-                              <strong className="float-end text-danger"> {currentUser.role} </strong>
+                              <strong className="float-end text-secondary"> {currentUser.role} </strong>
                           </p>
                       </div>
                       )

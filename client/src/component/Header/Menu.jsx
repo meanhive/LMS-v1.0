@@ -88,7 +88,7 @@ function Menu() {
 
 
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-secondary">
+    <nav className="navbar navbar-expand-md navbar-dark fixed-top bg-secondary">
         <div className="container">
             <NavLink to={`/`} className="navbar-brand">
                     {
