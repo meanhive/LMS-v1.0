@@ -37,6 +37,10 @@ const UserSchema = new mongoose.Schema({
         default: {
             url: "https://storiavoce.com/wp-content/plugins/lightbox/images/No-image-found.jpg"
         }
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     }
 }, {
     collection: "users",

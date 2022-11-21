@@ -12,6 +12,12 @@ function Menu() {
     const [isAdmin, setIsAdmin] = context.data.authApi.isAdmin
     const [isStudent, setIsStudent] = context.data.authApi.isStudent
     const [isTrainer, setIsTrainer] = context.data.authApi.isTrainer
+    const [isHr] = context.data.authApi.isHr
+    const [isAccount] = context.data.authApi.isAccount
+    const [isCounseller] = context.data.authApi.isCounseller
+    const [isMarketing] = context.data.authApi.isMarketing
+    const [isManager] = context.data.authApi.isManager
+  
     const [currentUser] = context.data.authApi.currentUser
 
     const navigate = useNavigate()
@@ -54,6 +60,26 @@ function Menu() {
                                 isTrainer ? <NavLink to={`/trainer/dashboard`} className="dropdown-item">Dashboard</NavLink>
                                 : null
                             }
+                            {
+                                isHr ? <NavLink to={`/hr/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                : null
+                            }
+                            {
+                                isManager ? <NavLink to={`/manager/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                : null
+                            }
+                            {
+                                isAccount ? <NavLink to={`/account/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                : null
+                            }
+                            {
+                                isMarketing ? <NavLink to={`/marketing/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                : null
+                            }
+                            {
+                                isCounseller ? <NavLink to={`/counseller/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                : null
+                            }
                         </li>
                         <li>
                             {
@@ -66,6 +92,26 @@ function Menu() {
                             }
                             {
                                 isTrainer ? <NavLink to={`/trainer/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isHr ? <NavLink to={`/hr/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isManager ? <NavLink to={`/manager/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isCounseller ? <NavLink to={`/counseller/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isAccount ? <NavLink to={`/account/profile`} className="dropdown-item">Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isMarketing ? <NavLink to={`/marketing/profile`} className="dropdown-item">Profile</NavLink>
                                 : null
                             }
                         </li>

@@ -10,6 +10,7 @@ function AllUsers() {
     const [users,setUsers] = useState([])
     const [role,setRole] = useState("")
     const [userId,setUserId] = useState("")
+    const [userActive,setUserActive] = useState(false)
 
     const readUsers =  async () => {
        const res = await axios.get(`/api/v1/user/allUsers`, {
@@ -29,12 +30,13 @@ function AllUsers() {
             // console.log('existUser =', extUser)
             setRole(extUser.role)
             setUserId(extUser._id)
+            setUserActive(extUser.isActive)
     }
 
     const submitHandler = async (e) => {
         e.preventDefault();
          // update db file
-         await axios.patch(`/api/v1/user/changeRole/${userId}`, { role: role }, {
+         await axios.patch(`/api/v1/user/changeRole/${userId}`, { role: role, isActive: userActive }, {
             headers: { Authorization: token }
           });
           toast.success("User Role updated successfully")
@@ -71,6 +73,7 @@ function AllUsers() {
                             <th>Email</th>
                             <th>Mobile</th>
                             <th>Role</th>
+                            <th>Is Active</th>
                             <th>Image</th>
                             <th>Actions</th>
                         </tr>
@@ -84,6 +87,7 @@ function AllUsers() {
                                         <td> {item.email} </td>
                                         <td> {item.mobile} </td>
                                         <td> {item.role} </td>
+                                        <td> {item.isActive ? <span className="text-success">Enabled</span> :  <span className="text-danger">Disabled</span> } </td>
                                         <td> 
                                             <img src={item.image.url} alt="no image found" className="img-fluid img-circle" width={50} height={50} />
                                         </td>
@@ -116,7 +120,19 @@ function AllUsers() {
                                     <select name="role" id="role" value={role} onChange={(e) => setRole(e.target.value)} className="form-select">
                                             <option value="student">Student</option>
                                             <option value="trainer">Trainer</option>
+                                            <option value="accountant">Accountant</option>
+                                            <option value="manager">Manager</option>
+                                            <option value="counsellor">Counsellor</option>
+                                            <option value="hr">HR</option>
+                                            <option value="marketing">Marketing</option>
                                     </select>
+                                </div>
+                                <div className="form-group mt-2">
+                                    <label htmlFor="isActive">Enable / Disable</label>
+                                    <input type="checkbox" name="userActive" id="userActive" className="form-check" value={"userActive"} checked={userActive} onChange={(e) => setUserActive(e.target.checked)} />
+                                    <strong>
+                                    {userActive ? <span className="text-success">Enabled</span> :  <span className="text-danger">Disabled</span> } 
+                                    </strong>
                                 </div>
                                 <div className="form-group mt-2">
                                     <input type="submit" value="Update" className="btn btn-warning" />

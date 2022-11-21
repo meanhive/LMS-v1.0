@@ -22,7 +22,7 @@ const authController = {
             const template = regTemplate(name,email)
             const subject = `Confirmation of registration with CMS-v1.0`;
             
-            await sendMail(email,subject,template)
+            // await sendMail(email,subject,template)
 
             res.status(StatusCodes.OK).json({ msg: "User registered Successfully", data: newUser })
 
@@ -43,6 +43,10 @@ const authController = {
             const isMatch = await bcrypt.compare(password, extUser.password)
                 if(!isMatch)
                     return res.status(StatusCodes.BAD_REQUEST).json({ msg: "password aren't match."})
+
+            // check user enabled or not
+            if(!extUser.isActive)
+                return res.status(StatusCodes.BAD_REQUEST).json({ msg: "Sorry, Your Account is blocked, contact Admin.."})
 
             // generate token
             const accessToken = createAccessToken({ _id: extUser._id })

@@ -21,6 +21,16 @@ import TrainerDashboard from './Trainer/TrainerDashboard'
 import TrainerProfile from './Trainer/TrainerProfile'
 import AllUsers from './Admin/AllUsers'
 import Footer from './Header/Footer'
+import ManagerDashboard from './Manager/ManagerDashboard'
+import ManagerProfile from './Manager/ManagerProfile'
+import HRDashboard from './HR/HRDashboard'
+import HRProfile from './HR/HRProfile'
+import MarketingDashboard from './Marketing/MarketingDashboard'
+import MarketingProfile from './Marketing/MarketingProfile'
+import CounsellerDashboard from './Counseller/CounsellerDashboard'
+import CounsellerProfile from './Counseller/CounsellerProfile'
+import AccountantDashboard from './Account/AccountantDashboard'
+import AccountantProfile from './Account/AccountantProfile'
 
 
 function Main() {
@@ -29,6 +39,11 @@ function Main() {
   const [isStudent] = context.data.authApi.isStudent
   const [isTrainer] = context.data.authApi.isTrainer
   const [isAdmin] = context.data.authApi.isAdmin
+  const [isHr] = context.data.authApi.isHr
+  const [isAccount] = context.data.authApi.isAccount
+  const [isCounseller] = context.data.authApi.isCounseller
+  const [isMarketing] = context.data.authApi.isMarketing
+  const [isManager] = context.data.authApi.isManager
 
   return (
     <Router history={history}>
@@ -69,6 +84,46 @@ function Main() {
                       <Route element={<ProtectedRoute/>} >
                           <Route path={`/trainer/dashboard`} element={<TrainerDashboard/>} />
                           <Route path={`/trainer/profile`} element={<TrainerProfile/>} />
+                      </Route>
+                  ) : null
+                }
+                {
+                  isLogged & isManager ? (
+                      <Route element={<ProtectedRoute/>} >
+                          <Route path={`/manager/dashboard`} element={<ManagerDashboard/>} />
+                          <Route path={`/manager/profile`} element={<ManagerProfile/>} />
+                      </Route>
+                  ) : null
+                }
+                {
+                  isLogged & isHr ? (
+                      <Route element={<ProtectedRoute/>} >
+                          <Route path={`/hr/dashboard`} element={<HRDashboard/>} />
+                          <Route path={`/hr/profile`} element={<HRProfile/>} />
+                      </Route>
+                  ) : null
+                }
+                {
+                  isLogged & isMarketing ? (
+                      <Route element={<ProtectedRoute/>} >
+                          <Route path={`/marketing/dashboard`} element={<MarketingDashboard/>} />
+                          <Route path={`/marketing/profile`} element={<MarketingProfile/>} />
+                      </Route>
+                  ) : null
+                }
+                {
+                  isLogged & isAccount ? (
+                      <Route element={<ProtectedRoute/>} >
+                          <Route path={`/account/dashboard`} element={<AccountantDashboard/>} />
+                          <Route path={`/account/profile`} element={<AccountantProfile/>} />
+                      </Route>
+                  ) : null
+                }
+                {
+                  isLogged & isCounseller ? (
+                      <Route element={<ProtectedRoute/>} >
+                          <Route path={`/counseller/dashboard`} element={<CounsellerDashboard/>} />
+                          <Route path={`/counseller/profile`} element={<CounsellerProfile/>} />
                       </Route>
                   ) : null
                 }

@@ -180,7 +180,7 @@ function StudentProfile() {
                                 </div>
                                 <div className="form-group mt-2">
                                     <label htmlFor="email">Email</label>
-                                    <input type="email" name="email" value={user.email} onChange={readValue} id="email" className="form-control" required />
+                                    <input type="email" name="email" value={user.email} onChange={readValue} id="email" className="form-control" required readOnly />
                                 </div>
                                 <div className="form-group mt-2">
                                     <label htmlFor="mobile">Mobile</label>

@@ -12,6 +12,11 @@ function AuthApi(token) {
     const [isStudent,setIsStudent] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isTrainer, setIsTrainer] = useState(false)
+    const [isAccount, setIsAccount] = useState(false)
+    const [isManager, setIsManager] = useState(false)
+    const [isMarketing, setIsMarketing] = useState(false)
+    const [isHr, setIsHr] = useState(false)
+    const [isCounseller, setIsCounseller] = useState(false)
 
    
 
@@ -34,6 +39,22 @@ function AuthApi(token) {
               if(out.data.user.role === "trainer") {
                   setIsTrainer(true)
               }
+              if(out.data.user.role === "manager") {
+                  setIsManager(true)
+              }
+              if(out.data.user.role === "hr") {
+                  setIsHr(true)
+              }
+              if(out.data.user.role === "counseller") {
+                  setIsCounseller(true)
+              }
+              if(out.data.user.role === "marketing") {
+                  setIsMarketing(true)
+              }
+              if(out.data.user.role === "accountant") {
+                  setIsAccount(true)
+              }
+
         }
             getData()
         }
@@ -44,6 +65,11 @@ function AuthApi(token) {
      isLogged: [isLogged, setIsLogged],
      isStudent: [isStudent,setIsStudent],
      isTrainer: [isTrainer,setIsTrainer],
+     isManager: [isManager,setIsManager],
+     isHr: [isHr, setIsHr],
+     isMarketing: [isMarketing, setIsMarketing],
+     isAccount: [isAccount, setIsAccount],
+     isCounseller: [isCounseller, setIsCounseller],
      isAdmin: [isAdmin,setIsAdmin]
   }
 }

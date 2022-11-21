@@ -49,11 +49,11 @@ const userController = {
     changeRole: async (req, res) => {
         try {
             const id = req.params.id 
-            const { role } = req.body
+            const { role, isActive } = req.body
 
-            await User.findByIdAndUpdate({ _id: id }, { role })
+            await User.findByIdAndUpdate({ _id: id }, { role, isActive })
 
-            res.json({ msg: "Role updated successfully" })
+            res.json({ msg: "User updated successfully" })
         } catch (err) {
             return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ msg: err.message })
         }
