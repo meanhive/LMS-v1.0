@@ -49,75 +49,92 @@ function Menu() {
                         
                         <li>
                         {
-                                isAdmin ? <NavLink to={`/admin/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isAdmin ? <NavLink to={`/admin/dashboard`} className="dropdown-item">
+                                     <i className="bi bi-speedometer2"></i> Dashboard</NavLink>
                                 : null
                             }
                             {
-                                isStudent ? <NavLink to={`/student/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isStudent ? <NavLink to={`/student/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                             {
-                                isTrainer ? <NavLink to={`/trainer/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isTrainer ? <NavLink to={`/trainer/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                             {
-                                isHr ? <NavLink to={`/hr/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isHr ? <NavLink to={`/hr/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                             {
-                                isManager ? <NavLink to={`/manager/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isManager ? <NavLink to={`/manager/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                             {
-                                isAccount ? <NavLink to={`/account/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isAccount ? <NavLink to={`/account/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                             {
-                                isMarketing ? <NavLink to={`/marketing/dashboard`} className="dropdown-item">Dashboard</NavLink>
+                                isMarketing ? <NavLink to={`/marketing/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                             {
-                                isCounseller ? <NavLink to={`/counseller/dashboard`} className="dropdown-item">Dashboard</NavLink>
-                                : null
-                            }
-                        </li>
-                        <li>
-                            {
-                                isAdmin ? <NavLink to={`/admin/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isStudent ? <NavLink to={`/student/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isTrainer ? <NavLink to={`/trainer/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isHr ? <NavLink to={`/hr/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isManager ? <NavLink to={`/manager/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isCounseller ? <NavLink to={`/counseller/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isAccount ? <NavLink to={`/account/profile`} className="dropdown-item">Profile</NavLink>
-                                : null
-                            }
-                            {
-                                isMarketing ? <NavLink to={`/marketing/profile`} className="dropdown-item">Profile</NavLink>
+                                isCounseller ? <NavLink to={`/counseller/dashboard`} className="dropdown-item">
+                                    <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
                         </li>
                         <li>
                             {
-                                isAdmin ? <NavLink to={`/admin/users`} className="dropdown-item">Users</NavLink>
+                                isAdmin ? <NavLink to={`/admin/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isStudent ? <NavLink to={`/student/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isTrainer ? <NavLink to={`/trainer/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isHr ? <NavLink to={`/hr/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isManager ? <NavLink to={`/manager/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isCounseller ? <NavLink to={`/counseller/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isAccount ? <NavLink to={`/account/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                            {
+                                isMarketing ? <NavLink to={`/marketing/profile`} className="dropdown-item">
+                                    <i className="bi bi-person"></i> Profile</NavLink>
+                                : null
+                            }
+                        </li>
+                        <li>
+                            {
+                                isAdmin ? <NavLink to={`/admin/users`} className="dropdown-item">
+                                    <i className="bi bi-people"></i> Users</NavLink>
                                 : null
                             }
                         </li>
