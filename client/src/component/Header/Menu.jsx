@@ -12,11 +12,11 @@ function Menu() {
     const [isAdmin, setIsAdmin] = context.data.authApi.isAdmin
     const [isStudent, setIsStudent] = context.data.authApi.isStudent
     const [isTrainer, setIsTrainer] = context.data.authApi.isTrainer
-    const [isHr] = context.data.authApi.isHr
-    const [isAccount] = context.data.authApi.isAccount
-    const [isCounseller] = context.data.authApi.isCounseller
-    const [isMarketing] = context.data.authApi.isMarketing
-    const [isManager] = context.data.authApi.isManager
+    const [isHr, setIsHr] = context.data.authApi.isHr
+    const [isAccount, setIsAccount] = context.data.authApi.isAccount
+    const [isCounsellor,setIsCounsellor] = context.data.authApi.isCounsellor
+    const [isMarketing, setIsMarketing] = context.data.authApi.isMarketing
+    const [isManager, setIsManager] = context.data.authApi.isManager
   
     const [currentUser] = context.data.authApi.currentUser
 
@@ -29,6 +29,12 @@ function Menu() {
             if(isAdmin)  setIsAdmin(false)
             if(isStudent)  setIsStudent(false)
             if(isTrainer)  setIsTrainer(false)
+            if(isAccount)  setIsAccount(false)
+            if(isCounsellor) setIsCounsellor(false)
+            if(isHr) setIsHr(false)
+            if(isMarketing) setIsMarketing(false)
+            if(isManager) setIsManager(false)
+
             setIsLogged(false)
             toast.success(res.data.msg);
             window.location.href = "/";
@@ -84,7 +90,7 @@ function Menu() {
                                 : null
                             }
                             {
-                                isCounseller ? <NavLink to={`/counseller/dashboard`} className="dropdown-item">
+                                isCounsellor ? <NavLink to={`/counsellor/dashboard`} className="dropdown-item">
                                     <i className="bi bi-speedometer2"></i> Dashboard </NavLink>
                                 : null
                             }
@@ -116,7 +122,7 @@ function Menu() {
                                 : null
                             }
                             {
-                                isCounseller ? <NavLink to={`/counseller/profile`} className="dropdown-item">
+                                isCounsellor ? <NavLink to={`/counsellor/profile`} className="dropdown-item">
                                     <i className="bi bi-person"></i> Profile</NavLink>
                                 : null
                             }
@@ -160,6 +166,11 @@ function Menu() {
                                     { isAdmin ? "Admin-LMS-v1.0": null }
                                     { isStudent ? "Student-LMS-v1.0": null }
                                     { isTrainer ? "Trainer-LMS-v1.0": null }
+                                    { isCounsellor ? "Counseller-LMS-v1.0": null }
+                                    { isHr ? "HR-LMS-v1.0": null }
+                                    { isManager ? "Manager-LMS-v1.0": null }
+                                    { isMarketing ? "Marketing-LMS-v1.0": null }
+                                    { isAccount ? "Accountant-LMS-v1.0": null }
                             </React.Fragment>
                         ): "LMS-v1.0"
                     }                    
@@ -190,9 +201,6 @@ function Menu() {
                         <nav className="navbar-nav">
                             <li className="nav-item">
                                 <NavLink to={`/login`} className="nav-link">Login</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink to={`/register`} className="nav-link">Register</NavLink>
                             </li>
                         </nav>
                     )

@@ -31,7 +31,7 @@ function Register(props) {
               .then(res => {
                   // console.log('after register =', res.data);
                   toast.success("User Registered Successfully");
-                  navigate('/login')
+                  navigate('/admin/users')
               }).catch(err => toast.error(err.message));
         } catch (err) {
           toast.error(err.response.data.msg)
@@ -42,7 +42,7 @@ function Register(props) {
     <div className="container">
       <div className="row">
         <div className="col-md-12 text-center">
-          <h3 className="display-3">Register</h3>
+          <h3 className="display-3">Add New User</h3>
         </div>
       </div>
       <div className="row">
@@ -67,7 +67,7 @@ function Register(props) {
                           <input type="password" name="password" id="password" value={user.password} onChange={readValue} className="form-control" required />
                       </div>
                       <div className="form-group mt-2">
-                          <input type="submit" value="Register" className="btn btn-warning" />
+                          <input type="submit" value="Save" className="btn btn-success" />
                       </div>
                   </form>
               </div>

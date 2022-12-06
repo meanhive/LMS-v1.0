@@ -4,12 +4,13 @@ import axios from 'axios';
 import {toast} from 'react-toastify'
 
 const Loading = () => {
-  return <div className="spinner-border text-success" role={'status'}>
-      <span className="visually-hidden">Loading...`</span>
-  </div>
+    return <div className="spinner-border text-success" role={'status'}>
+        <span className="visually-hidden">Loading...`</span>
+    </div>
 }
 
-function HRProfile() {
+
+function CounsellorProfile() {
   const context = useContext(DataContext)
   const token = context.token
   const [currentUser] = context.data.authApi.currentUser
@@ -224,4 +225,5 @@ function HRProfile() {
    </div>
   )
 }
-export default HRProfile
+
+export default CounsellorProfile

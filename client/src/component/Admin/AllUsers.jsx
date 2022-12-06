@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import { DataContext } from '../../GlobalContext'
 import { toast } from 'react-toastify';
 import axios from 'axios';
-
+import { NavLink } from 'react-router-dom'
 
 function AllUsers() {
     const context = useContext(DataContext)
@@ -68,6 +68,12 @@ function AllUsers() {
             <div className="col-md-12 table-responsive">
                 <table className="table table-bordered table-striped">
                     <thead>
+                        <tr>
+                            <td colSpan="7">
+                                <NavLink to={`/admin/addUser`} className="btn btn-outline-success float-end">
+                                   <i className="bi bi-plus-circle "></i> Add New User</NavLink>
+                            </td>
+                        </tr>
                         <tr className='text-center'>
                             <th>Name</th>
                             <th>Email</th>

@@ -27,10 +27,10 @@ import HRDashboard from './HR/HRDashboard'
 import HRProfile from './HR/HRProfile'
 import MarketingDashboard from './Marketing/MarketingDashboard'
 import MarketingProfile from './Marketing/MarketingProfile'
-import CounsellerDashboard from './Counseller/CounsellerDashboard'
-import CounsellerProfile from './Counseller/CounsellerProfile'
 import AccountantDashboard from './Account/AccountantDashboard'
 import AccountantProfile from './Account/AccountantProfile'
+import CounsellorDashboard from './Counsellor/CounsellorDashboard'
+import CounsellorProfile from './Counsellor/CounsellorProfile'
 
 
 function Main() {
@@ -41,7 +41,7 @@ function Main() {
   const [isAdmin] = context.data.authApi.isAdmin
   const [isHr] = context.data.authApi.isHr
   const [isAccount] = context.data.authApi.isAccount
-  const [isCounseller] = context.data.authApi.isCounseller
+  const [isCounsellor] = context.data.authApi.isCounsellor
   const [isMarketing] = context.data.authApi.isMarketing
   const [isManager] = context.data.authApi.isManager
 
@@ -61,13 +61,14 @@ function Main() {
                 <Route path={`/about`} element={isLogged ? <Navigate to={`/*`} /> : <About/>} />
                 <Route path={`/contact`} element={isLogged ? <Navigate to={`/*`} /> : <Contact/>} />
                 <Route path={`/login`} element={isLogged ? <Navigate to={`/*`} /> : <Login/>} />
-                <Route path={`/register`} element={isLogged ? <Navigate to={`/*`} /> : <Register/>} />
+                
                 {
                   isLogged && isAdmin ? (
                       <Route element={<ProtectedRoute/>} >
                           <Route path={`/admin/dashboard`} element={<AdminDashboard/>} />
                           <Route path={`/admin/users`} element={<AllUsers/>} />
                           <Route path={`/admin/profile`} element={<AdminProfile/>} />
+                          <Route path={`/admin/addUser`} element={<Register/>} />
                       </Route>
                   ) : null
                 }
@@ -120,10 +121,10 @@ function Main() {
                   ) : null
                 }
                 {
-                  isLogged & isCounseller ? (
+                  isLogged & isCounsellor ? (
                       <Route element={<ProtectedRoute/>} >
-                          <Route path={`/counseller/dashboard`} element={<CounsellerDashboard/>} />
-                          <Route path={`/counseller/profile`} element={<CounsellerProfile/>} />
+                          <Route path={`/counsellor/dashboard`} element={<CounsellorDashboard/>} />
+                          <Route path={`/counsellor/profile`} element={<CounsellorProfile/>} />
                       </Route>
                   ) : null
                 }

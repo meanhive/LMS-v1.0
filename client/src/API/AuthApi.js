@@ -16,7 +16,7 @@ function AuthApi(token) {
     const [isManager, setIsManager] = useState(false)
     const [isMarketing, setIsMarketing] = useState(false)
     const [isHr, setIsHr] = useState(false)
-    const [isCounseller, setIsCounseller] = useState(false)
+    const [isCounsellor, setIsCounsellor] = useState(false)
 
    
 
@@ -45,8 +45,8 @@ function AuthApi(token) {
               if(out.data.user.role === "hr") {
                   setIsHr(true)
               }
-              if(out.data.user.role === "counseller") {
-                  setIsCounseller(true)
+              if(out.data.user.role === "counsellor") {
+                  setIsCounsellor(true)
               }
               if(out.data.user.role === "marketing") {
                   setIsMarketing(true)
@@ -69,7 +69,7 @@ function AuthApi(token) {
      isHr: [isHr, setIsHr],
      isMarketing: [isMarketing, setIsMarketing],
      isAccount: [isAccount, setIsAccount],
-     isCounseller: [isCounseller, setIsCounseller],
+     isCounsellor: [isCounsellor, setIsCounsellor],
      isAdmin: [isAdmin,setIsAdmin]
   }
 }
